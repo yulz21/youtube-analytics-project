@@ -49,3 +49,23 @@ class Channel:
         with open(self.name_json, 'w', encoding="utf-8") as file:
             print(json_dict, file=file)
 
+    def __str__(self):
+        """Метод, который выводит пользовательскую информацию в формате: название канала (ссылка на канал)"""
+        return f'{self.title} ({self.url})'
+
+    def __add__(self, other):
+        """Складывает количество подписчиков двух каналов"""
+        return self.subscriber_count + other.subscriber_count
+
+    def __sub__(self, other):
+        """Вычитает количество подписчиков двух каналов"""
+        return self.subscriber_count - other.subscriber_count
+
+    def __gt__(self, other):
+        """Сравнивает количество подписчиков. Возвращает True, если в первом их больше"""
+        return self.subscriber_count > other.subscriber_count
+
+    def __ge__(self, other):
+        """Сравнивает количество подписчиков. Возвращает True, если в первом их больше или равно количеству во втором"""
+        return self.subscriber_count >= other.subscriber_count
+
